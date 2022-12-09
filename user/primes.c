@@ -1,8 +1,10 @@
+#include "kernel/types.h"
+#include "kernel/stat.h"
 #include "user/user.h"
 
 void primes(int *fd);
 
-int main(int agrc, int *argv[]) {
+int main() {
   int fd[2];
   pipe(fd);
   if (fork() == 0) {
@@ -17,7 +19,6 @@ int main(int agrc, int *argv[]) {
   }
   exit(0);
 }
-
 
 void primes(int *fd) {
   close(fd[1]);
