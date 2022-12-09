@@ -1,5 +1,3 @@
-#include "kernel/types.h"
-#include "kernel/stat.h"
 #include "user/user.h"
 
 void primes(int *fd);
@@ -20,12 +18,13 @@ int main(int agrc, int *argv[]) {
   exit(0);
 }
 
+
 void primes(int *fd) {
   close(fd[1]);
   int num, prime;
   if (read(fd[0], (void *)&prime, sizeof(prime))) {
     printf("prime %d\n", prime);
-  } 
+  }
   if (read(fd[0], (void *)&num, sizeof(num))) {
     int fd1[2];
     pipe(fd1);
@@ -37,7 +36,7 @@ void primes(int *fd) {
         if (num % prime != 0) {
           write(fd1[1], (void *)&num, sizeof(int));
         }
-      }while(read(fd[0], &num, sizeof(int)));
+      } while (read(fd[0], &num, sizeof(int)));
       close(fd1[1]);
       close(fd[0]);
       wait(0);
