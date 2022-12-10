@@ -19,7 +19,6 @@ int main() {
         wait(0);
     }
     exit(0);
-    exit(0);
 }
 
 void primes(int *fd) {
