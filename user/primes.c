@@ -1,6 +1,7 @@
 #include "kernel/types.h"
 #include "kernel/stat.h"
 #include "user/user.h"
+#include <stdlib.h>
 
 void primes(int *fd);
 
@@ -17,6 +18,7 @@ int main() {
         close(fd[1]);
         wait(0);
     }
+    exit(0);
     exit(0);
 }
 
