@@ -2,7 +2,6 @@
 #include "kernel/stat.h"
 #include "user/user.h"
 
-
 void primes(int *fd);
 
 int main() {
