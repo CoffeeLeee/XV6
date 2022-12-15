@@ -28,7 +28,7 @@ void dfs(char path[], char filename[]) {
         stat(buf, &st);
         if (st.type == T_FILE) {
             if (strcmp(de.name, filename) == 0)
-                printf("%s\n", buf);
+                fprintf(1, "%s\n", buf);
         } else if (st.type == T_DIR) {
             dfs(buf, filename);
         }

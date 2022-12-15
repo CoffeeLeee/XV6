@@ -17,8 +17,9 @@ find . b | xargs grep hello
 int main(int argc, char *argv[]) {
     char *command = argv[1];
     char *ag_arr[MAXARG];
-    ag_arr[0] = argv[2];
-    int origin_arg = argc - 2;
+    for (int i = 1; i < argc; ++i) {
+        ag_arr[i - 1] = argv[i];
+    }
     char input_arg[128];
     int index = 0;
     char ch;
@@ -27,14 +28,10 @@ int main(int argc, char *argv[]) {
             input_arg[index++] = ch;
         } else {
             input_arg[index] = 0;
-            ag_arr[origin_arg] = input_arg;
-            ag_arr[origin_arg + 1] = 0;
+            ag_arr[argc - 1] = input_arg;
+            ag_arr[argc] = 0;
             index = 0;
-            for(int i = 0; i <= origin_arg; ++i){
-                printf("arg %d : %s\n",i,ag_arr[i]);
-            }
             if (fork() == 0) {
-                printf("%s\nxargs exec\n",input_arg);
                 exec(command, ag_arr);
             } else {
                 wait(0);
