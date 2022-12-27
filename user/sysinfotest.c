@@ -4,6 +4,7 @@
 #include "user/user.h"
 
 
+
 void
 sinfo(struct sysinfo *info) {
   if (sysinfo(info) < 0) {
@@ -123,7 +124,7 @@ void testproc() {
 int
 main(int argc, char *argv[])
 {
-  printf("sysinfotest: start\n");
+  printf("sysinfotest: start\n"); 
   testcall();
   testmem();
   testproc();
